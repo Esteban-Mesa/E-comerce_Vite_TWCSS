@@ -8,17 +8,25 @@ function useGetProducts({ type }) {
   const [errorProducts, setErrorProducts] = useState(false);
 
   useEffect(() => {
-    fetch(URL)
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts(data);
+    async function fetchData() {
+      try {
+        const response = await fetch(URL);
+
+        if (!response.ok) {
+          throw new Error("La solicitud no fue exitosa");
+        }
+
+        const jsonData = await response.json();
+        setProducts(jsonData);
         setLoadingProducts(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.log(error);
         setErrorProducts(true);
         setLoadingProducts(false);
-      });
+      }
+    }
+
+    fetchData();
   }, []);
 
   return {
