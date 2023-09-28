@@ -2,6 +2,7 @@ import React from "react";
 import useGetProducts from "../../Hooks/GetProducts";
 import Layout from "../../Components/Layout";
 import Card from "../../Components/Card";
+import ProductDeatail from "../../ProductDetail";
 
 function Home() {
   const { products, loadingProducts, errorProducts } = useGetProducts("");
@@ -14,6 +15,7 @@ function Home() {
           <Card image={data.image} title={data.title} price={data.price} category={data.category} />
         ))}
       </section>
+      <ProductDeatail />
     </Layout>
   );
 }
