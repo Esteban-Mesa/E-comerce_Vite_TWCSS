@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ShoppingCartContex } from "../../Context";
+import { PlusIcon } from "@heroicons/react/24/outline";
 
 function Card({ title, price, category, image }) {
   const { count, setCount } = useContext(ShoppingCartContex);
@@ -17,7 +18,7 @@ function Card({ title, price, category, image }) {
           onClick={() => {
             setCount(count + 1);
           }}>
-          +
+          <PlusIcon />
         </button>
       </figure>
       <p className="flex justify-between">
