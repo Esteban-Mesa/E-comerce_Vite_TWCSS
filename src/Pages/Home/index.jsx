@@ -12,7 +12,14 @@ function Home() {
       {errorProducts ? "not found" : null}
       <section className="grid grap-4 grid-cols-2 lg:grid-cols-4 justify-items-center w-full max-w-screen-lg">
         {products?.map((data) => (
-          <Card image={data.image} title={data.title} price={data.price} category={data.category} />
+          <Card
+            image={data.image}
+            title={data.title}
+            price={data.price}
+            category={data.category}
+            description={data.description}
+            key={data.id}
+          />
         ))}
       </section>
       <ProductDeatail />
