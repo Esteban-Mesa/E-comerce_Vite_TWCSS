@@ -9,6 +9,11 @@ export function ShoppingCartProvider({ children }) {
   // Shopping Cart • increment quantity
   const [cartProducts, setCartProducts] = useState([]);
 
+  // Checkout side menu • Open/Close
+  const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false);
+  const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true);
+  const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false);
+
   // product deatail • Open/Close
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const openProductDetail = () => setIsProductDetailOpen(true);
@@ -29,6 +34,9 @@ export function ShoppingCartProvider({ children }) {
         setProductToShow,
         cartProducts,
         setCartProducts,
+        isCheckoutSideMenuOpen,
+        openCheckoutSideMenu,
+        closeCheckoutSideMenu,
       }}>
       {children}
     </ShoppingCartContex.Provider>
