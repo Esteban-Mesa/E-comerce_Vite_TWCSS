@@ -18,14 +18,17 @@ function CheckoutSideMenu() {
           <XMarkIcon className="h-6 cursor-pointer" />
         </button>
       </div>
-      {cartProducts.map((product) => (
-        <OrderCard
-          id={product.id}
-          title={product.title}
-          image={product.image}
-          price={product.price}
-        />
-      ))}
+      <div className="overflow-y-auto">
+        {cartProducts.map((product) => (
+          <OrderCard
+            key={product.id}
+            id={product.id}
+            title={product.title}
+            image={product.image}
+            price={product.price}
+          />
+        ))}
+      </div>
     </aside>
   );
 }

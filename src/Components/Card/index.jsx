@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { ShoppingCartContex } from "../../Context";
-import { PlusIcon } from "@heroicons/react/24/outline";
+import { PlusIcon, CheckIcon } from "@heroicons/react/24/outline";
 
-function Card({ title, price, category, image, description }) {
+function Card({ id, title, price, category, image, description }) {
   const {
     count,
     setCount,
@@ -27,7 +27,31 @@ function Card({ title, price, category, image, description }) {
     closeProductDetail();
     setCount(count + 1);
     setCartProducts([...cartProducts, dataProduct]);
-    console.log(cartProducts);
+  };
+
+  const renderIcon = (id) => {
+    const isInCart = cartProducts.some((product) => product.id === id);
+
+    if (isInCart) {
+      return (
+        <button
+          type="button"
+          className="absolute top-0 right-0 flex justify-center items-center bg-gray-900/50 w-7 h-7 p-1  rounded-full m-2 font-bold">
+          <CheckIcon className="text-white" />
+        </button>
+      );
+    } else {
+      return (
+        <button
+          type="button"
+          className="absolute top-0 right-0 flex justify-center items-center bg-white w-7 h-7 p-1 rounded-full m-2 font-bold"
+          onClick={(event) => {
+            addProductsToCart(event, { id, title, price, category, image, description });
+          }}>
+          <PlusIcon />
+        </button>
+      );
+    }
   };
 
   return (
@@ -39,14 +63,7 @@ function Card({ title, price, category, image, description }) {
           {category}
         </span>
         <img className="w-full h-full object-cover rounded-lg" src={image} alt={title} />
-        <button
-          type="button"
-          className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 font-bold"
-          onClick={(event) =>
-            addProductsToCart(event, { title, price, category, image, description })
-          }>
-          <PlusIcon />
-        </button>
+        {renderIcon(id)}
       </figure>
       <p className="flex justify-between">
         <span className="text-sm font-light truncate">{title}</span>
