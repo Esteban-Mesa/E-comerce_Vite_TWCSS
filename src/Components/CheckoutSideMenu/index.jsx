@@ -4,12 +4,13 @@ import { ShoppingCartContex } from "../../Context";
 import OrderCard from "../OrderCard";
 
 function CheckoutSideMenu() {
-  const { isCheckoutSideMenuOpen, closeCheckoutSideMenu, cartProducts, setCartProducts } =
+  const { isCheckoutSideMenuOpen, closeCheckoutSideMenu, cartProducts, setCartProducts, setCount } =
     useContext(ShoppingCartContex);
 
   const handleDelete = (id) => {
     const filteredProducts = cartProducts.filter((product) => product.id != id);
     setCartProducts(filteredProducts);
+    setCount(cartProducts.length - 1);
   };
 
   return (
