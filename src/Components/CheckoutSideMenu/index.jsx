@@ -4,8 +4,13 @@ import { ShoppingCartContex } from "../../Context";
 import OrderCard from "../OrderCard";
 
 function CheckoutSideMenu() {
-  const { isCheckoutSideMenuOpen, closeCheckoutSideMenu, productToShow, cartProducts } =
+  const { isCheckoutSideMenuOpen, closeCheckoutSideMenu, cartProducts, setCartProducts } =
     useContext(ShoppingCartContex);
+
+  const handleDelete = (id) => {
+    const filteredProducts = cartProducts.filter((product) => product.id != id);
+    setCartProducts(filteredProducts);
+  };
 
   return (
     <aside
@@ -26,6 +31,7 @@ function CheckoutSideMenu() {
             title={product.title}
             image={product.image}
             price={product.price}
+            handleDelete={handleDelete}
           />
         ))}
       </div>
