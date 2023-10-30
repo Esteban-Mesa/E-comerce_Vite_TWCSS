@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { ShoppingCartContex } from "../../Context";
 import OrderCard from "../OrderCard";
@@ -10,7 +11,6 @@ function CheckoutSideMenu() {
     closeCheckoutSideMenu,
     cartProducts,
     setCartProducts,
-    setCount,
     order,
     setOrder,
   } = useContext(ShoppingCartContex);
@@ -18,8 +18,6 @@ function CheckoutSideMenu() {
   const handleDelete = (id) => {
     const filteredProducts = cartProducts.filter((product) => product.id != id);
     setCartProducts(filteredProducts);
-    setCount(cartProducts.length - 1);
-    console.log(cartProducts);
   };
 
   const handleCheckout = () => {
@@ -32,7 +30,6 @@ function CheckoutSideMenu() {
 
     setOrder([...order, orderToAdd]);
     setCartProducts([]);
-    setCount(0);
   };
 
   return (
@@ -63,14 +60,16 @@ function CheckoutSideMenu() {
           <span className="font-light">Total:</span>
           <span className="font-medium text-2xl">${`${totalPrice(cartProducts)}`}</span>
         </p>
-        <button
-          className="bg-black text-white w-full py-3 rounded-lg"
-          type="button"
-          onClick={() => {
-            handleCheckout();
-          }}>
-          Checkout
-        </button>
+        <Link to="/my-orders/last">
+          <button
+            className="bg-black text-white w-full py-3 rounded-lg"
+            type="button"
+            onClick={() => {
+              handleCheckout();
+            }}>
+            Checkout
+          </button>
+        </Link>
       </div>
     </aside>
   );

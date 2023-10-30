@@ -4,8 +4,6 @@ import { PlusIcon, CheckIcon } from "@heroicons/react/24/outline";
 
 function Card({ id, title, price, category, image, description }) {
   const {
-    count,
-    setCount,
     openProductDetail,
     closeProductDetail,
     setProductToShow,
@@ -25,7 +23,6 @@ function Card({ id, title, price, category, image, description }) {
     event.stopPropagation();
     openCheckoutSideMenu();
     closeProductDetail();
-    setCount(cartProducts.length + 1);
     setCartProducts([...cartProducts, dataProduct]);
   };
 

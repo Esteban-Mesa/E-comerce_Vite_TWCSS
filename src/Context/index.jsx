@@ -4,10 +4,8 @@ export const ShoppingCartContex = createContext();
 
 export function ShoppingCartProvider({ children }) {
   // Shopping Cart • increment quantity
-  const [count, setCount] = useState(0);
-
-  // Shopping Cart • increment quantity
   const [cartProducts, setCartProducts] = useState([]);
+  const count = cartProducts.length;
 
   // Shopping Cart • Oreder
   const [order, setOrder] = useState([]);
@@ -29,7 +27,6 @@ export function ShoppingCartProvider({ children }) {
     <ShoppingCartContex.Provider
       value={{
         count,
-        setCount,
         isProductDetailOpen,
         openProductDetail,
         closeProductDetail,
