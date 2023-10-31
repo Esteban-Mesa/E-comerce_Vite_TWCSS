@@ -30,6 +30,7 @@ function CheckoutSideMenu() {
 
     setOrder([...order, orderToAdd]);
     setCartProducts([]);
+    closeCheckoutSideMenu();
   };
 
   return (
