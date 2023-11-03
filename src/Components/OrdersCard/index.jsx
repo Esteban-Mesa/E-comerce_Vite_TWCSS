@@ -1,8 +1,8 @@
-function OrdersCard(totalPrice, totalProducts) {
+function OrdersCard({ totalPrice, totalProducts, date }) {
   return (
     <div className="flex justify-between items-center mb-3 border border-black">
       <p>
-        <samp>01.02.23</samp>
+        <samp>{date}</samp>
         <samp>{totalProducts}</samp>
         <samp>{totalPrice}</samp>
       </p>
