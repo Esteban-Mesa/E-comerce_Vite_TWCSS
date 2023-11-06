@@ -1,14 +1,20 @@
 import React from "react";
 import { useContext } from "react";
-import useGetProducts from "../../Hooks/GetProducts";
 import Layout from "../../Components/Layout";
 import Card from "../../Components/Card";
 import ProductDeatail from "../../ProductDetail";
 import { ShoppingCartContex } from "../../Context";
 
 function Home() {
-  const { products, loadingProducts, errorProducts } = useGetProducts("");
-  const { isProductDetailOpen, isCheckoutSideMenuOpen } = useContext(ShoppingCartContex);
+  const {
+    products,
+    loadingProducts,
+    errorProducts,
+    searchByTitle,
+    setSearchByTitle,
+    isProductDetailOpen,
+    isCheckoutSideMenuOpen,
+  } = useContext(ShoppingCartContex);
 
   const accommodateProducts = () => {
     if (isProductDetailOpen || isCheckoutSideMenuOpen) {
@@ -20,6 +26,17 @@ function Home() {
 
   return (
     <Layout>
+      <div className="relative flex justify-center w-80 mb-8">
+        <h1 className="font-medium text-xl">Exclusive products</h1>
+      </div>
+      <input
+        type="text"
+        placeholder="Search a product"
+        className="rounded-lg border border-black w-80 h-8 p-4 mb-4 focus:outline-none"
+        onChange={(event) => {
+          setSearchByTitle(event.target.value);
+        }}
+      />
       <div className={`${accommodateProducts() ? "w-full" : "w-full flex justify-center"}`}>
         {loadingProducts ? "loading" : null}
         {errorProducts ? "not found" : null}

@@ -1,8 +1,15 @@
 import { createContext, useState } from "react";
+import useGetProducts from "../Hooks/GetProducts";
 
 export const ShoppingCartContex = createContext();
 
 export function ShoppingCartProvider({ children }) {
+  // Get Products
+  const { products, loadingProducts, errorProducts } = useGetProducts("");
+
+  // Get Products by title
+  const [searchByTitle, setSearchByTitle] = useState(null);
+
   // Shopping Cart • increment quantity
   const [cartProducts, setCartProducts] = useState([]);
   const count = cartProducts.length;
@@ -15,23 +22,28 @@ export function ShoppingCartProvider({ children }) {
   const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true);
   const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false);
 
-  // product deatail • Open/Close
+  // Product deatail • Open/Close
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const openProductDetail = () => setIsProductDetailOpen(true);
   const closeProductDetail = () => setIsProductDetailOpen(false);
 
-  // product deatail • Show product
+  // Product deatail • Show product
   const [productToShow, setProductToShow] = useState({});
 
   return (
     <ShoppingCartContex.Provider
       value={{
-        count,
+        products,
+        loadingProducts,
+        errorProducts,
+        searchByTitle,
+        setSearchByTitle,
         isProductDetailOpen,
         openProductDetail,
         closeProductDetail,
         productToShow,
         setProductToShow,
+        count,
         cartProducts,
         setCartProducts,
         isCheckoutSideMenuOpen,

@@ -10,7 +10,7 @@ function MyOrders() {
   return (
     <Layout>
       <div className="relative flex justify-center w-80 mb-8">
-        <h1>My Orders</h1>
+        <h1 className="font-medium text-xl">My Orders</h1>
       </div>
 
       {order.map((order, index) => {
