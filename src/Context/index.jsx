@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import useGetProducts from "../Hooks/GetProducts";
 
 export const ShoppingCartContex = createContext();
@@ -9,6 +9,21 @@ export function ShoppingCartProvider({ children }) {
 
   // Get Products by title
   const [searchByTitle, setSearchByTitle] = useState(null);
+
+  // Filtered products
+  const [filteredProducts, setFilteredProducts] = useState(null);
+
+  const filteredProductsByTitle = (products, searchByTitle) => {
+    return products?.filter((products) =>
+      products.title.toLocaleLowerCase().includes(searchByTitle.toLocaleLowerCase()),
+    );
+  };
+
+  useEffect(() => {
+    if (searchByTitle) {
+      setFilteredProducts(filteredProductsByTitle(products, searchByTitle));
+    }
+  }, [products, searchByTitle]);
 
   // Shopping Cart • increment quantity
   const [cartProducts, setCartProducts] = useState([]);
@@ -33,6 +48,7 @@ export function ShoppingCartProvider({ children }) {
   return (
     <ShoppingCartContex.Provider
       value={{
+        filteredProducts,
         products,
         loadingProducts,
         errorProducts,

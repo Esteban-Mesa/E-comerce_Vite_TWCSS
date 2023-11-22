@@ -7,6 +7,7 @@ import { ShoppingCartContex } from "../../Context";
 
 function Home() {
   const {
+    filteredProducts,
     products,
     loadingProducts,
     errorProducts,
@@ -15,6 +16,16 @@ function Home() {
     isProductDetailOpen,
     isCheckoutSideMenuOpen,
   } = useContext(ShoppingCartContex);
+
+  const renderView = () => {
+    const itemsToRender = searchByTitle?.length > 0 ? filteredProducts : products;
+
+    if (itemsToRender?.length > 0) {
+      return itemsToRender?.map((data) => <Card key={data.id} dataCard={data} />);
+    } else {
+      return <p>No Results Found</p>;
+    }
+  };
 
   const accommodateProducts = () => {
     if (isProductDetailOpen || isCheckoutSideMenuOpen) {
@@ -34,6 +45,7 @@ function Home() {
         placeholder="Search a product"
         className="rounded-lg border border-black w-80 h-8 p-4 mb-4 focus:outline-none"
         onChange={(event) => {
+          console.log(filteredProducts);
           setSearchByTitle(event.target.value);
         }}
       />
@@ -44,17 +56,7 @@ function Home() {
           className={`grid grap-4 grid-cols-2 lg:grid-cols-4 justify-items-center  ${
             accommodateProducts() ? "pr-96" : "w-full max-w-screen-lg"
           }`}>
-          {products?.map((data) => (
-            <Card
-              image={data.image}
-              title={data.title}
-              price={data.price}
-              category={data.category}
-              description={data.description}
-              key={data.id}
-              id={data.id}
-            />
-          ))}
+          {renderView()}
         </section>
       </div>
       <ProductDeatail />

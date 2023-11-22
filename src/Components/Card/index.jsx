@@ -2,7 +2,9 @@ import { useContext } from "react";
 import { ShoppingCartContex } from "../../Context";
 import { PlusIcon, CheckIcon } from "@heroicons/react/24/outline";
 
-function Card({ id, title, price, category, image, description }) {
+function Card({ dataCard }) {
+  const { id, title, price, category, image, description } = dataCard;
+
   const {
     openProductDetail,
     closeProductDetail,
