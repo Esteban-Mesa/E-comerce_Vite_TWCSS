@@ -4,7 +4,7 @@ import { ShoppingCartContex } from "../../Context";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 
 function Navbar() {
-  const { count } = useContext(ShoppingCartContex);
+  const { count, setCategoryToFilter } = useContext(ShoppingCartContex);
   const activeStyle = "underline underline-offset-4";
 
   return (
@@ -14,33 +14,53 @@ function Navbar() {
           <NavLink to="/">Shopi</NavLink>
         </li>
         <li>
-          <NavLink to="/" className={({ isActive }) => (isActive ? activeStyle : null)}>
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? activeStyle : null)}
+            onClick={() => {
+              setCategoryToFilter(null);
+            }}>
             All
           </NavLink>
         </li>
         <li>
-          <NavLink to="/clothes" className={({ isActive }) => (isActive ? activeStyle : null)}>
-            Clothes
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/electronics" className={({ isActive }) => (isActive ? activeStyle : null)}>
+          <NavLink
+            to="/electronics"
+            className={({ isActive }) => (isActive ? activeStyle : null)}
+            onClick={() => {
+              setCategoryToFilter("electronics");
+            }}>
             Electronics
           </NavLink>
         </li>
         <li>
-          <NavLink to="/furnitures" className={({ isActive }) => (isActive ? activeStyle : null)}>
-            Furnitures
+          <NavLink
+            to="/jewelery"
+            className={({ isActive }) => (isActive ? activeStyle : null)}
+            onClick={() => {
+              setCategoryToFilter("jewelery");
+            }}>
+            Jewelery
           </NavLink>
         </li>
         <li>
-          <NavLink to="/toys" className={({ isActive }) => (isActive ? activeStyle : null)}>
-            Toys
+          <NavLink
+            to="/men's clothing"
+            className={({ isActive }) => (isActive ? activeStyle : null)}
+            onClick={() => {
+              setCategoryToFilter("men's clothing");
+            }}>
+            Men's clothing
           </NavLink>
         </li>
         <li>
-          <NavLink to="/others" className={({ isActive }) => (isActive ? activeStyle : null)}>
-            Others
+          <NavLink
+            to="/women's clothing"
+            className={({ isActive }) => (isActive ? activeStyle : null)}
+            onClick={() => {
+              setCategoryToFilter("women's clothing");
+            }}>
+            Women's clothing
           </NavLink>
         </li>
       </ul>

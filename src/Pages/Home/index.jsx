@@ -9,6 +9,7 @@ function Home() {
   const {
     filteredProducts,
     products,
+    filterByCategory,
     loadingProducts,
     errorProducts,
     searchByTitle,
@@ -17,10 +18,15 @@ function Home() {
     isCheckoutSideMenuOpen,
   } = useContext(ShoppingCartContex);
 
+  console.log(`filtrados: ${filteredProducts?.length}\n productos:${filterByCategory?.length}
+  title: ${searchByTitle}`);
+
   const renderView = () => {
     const itemsToRender = searchByTitle?.length > 0 ? filteredProducts : products;
 
-    if (itemsToRender?.length > 0) {
+    if (filterByCategory && searchByTitle == false) {
+      return filterByCategory?.map((data) => <Card key={data.id} dataCard={data} />);
+    } else if (itemsToRender?.length > 0) {
       return itemsToRender?.map((data) => <Card key={data.id} dataCard={data} />);
     } else {
       return <p>No Results Found</p>;
@@ -34,6 +40,7 @@ function Home() {
       return false;
     }
   };
+  // setCategoryToFilter(useParams())
 
   return (
     <Layout>

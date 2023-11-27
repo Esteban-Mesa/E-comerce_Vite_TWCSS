@@ -8,9 +8,28 @@ export function ShoppingCartProvider({ children }) {
   const { products, loadingProducts, errorProducts } = useGetProducts("");
 
   // Get Products by title
-  const [searchByTitle, setSearchByTitle] = useState(null);
+  const [searchByTitle, setSearchByTitle] = useState("");
 
-  // Filtered products
+  // Get Products by category
+  const [categoryToFilter, setCategoryToFilter] = useState(null);
+
+  // Filtered products by category
+  const [filterByCategory, setFilterByCategory] = useState(null);
+
+  const filteredProductsByCategory = (products, categoryToFilter) => {
+    return products?.filter((products) => products.category == categoryToFilter);
+  };
+
+  useEffect(() => {
+    if (categoryToFilter == null) {
+      setFilterByCategory(null);
+    } else {
+      setFilterByCategory(filteredProductsByCategory(products, categoryToFilter));
+    }
+  }, [products, categoryToFilter]);
+
+  console.log(filterByCategory);
+  // Filtered products by title
   const [filteredProducts, setFilteredProducts] = useState(null);
 
   const filteredProductsByTitle = (products, searchByTitle) => {
@@ -20,7 +39,9 @@ export function ShoppingCartProvider({ children }) {
   };
 
   useEffect(() => {
-    if (searchByTitle) {
+    if (searchByTitle && filterByCategory) {
+      setFilteredProducts(filteredProductsByTitle(filterByCategory, searchByTitle));
+    } else if (searchByTitle) {
       setFilteredProducts(filteredProductsByTitle(products, searchByTitle));
     }
   }, [products, searchByTitle]);
@@ -52,6 +73,9 @@ export function ShoppingCartProvider({ children }) {
         products,
         loadingProducts,
         errorProducts,
+        filterByCategory,
+        setCategoryToFilter,
+        categoryToFilter,
         searchByTitle,
         setSearchByTitle,
         isProductDetailOpen,
