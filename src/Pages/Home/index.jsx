@@ -45,12 +45,12 @@ function Home() {
   return (
     <Layout>
       <div className="relative flex justify-center w-80 mb-8">
-        <h1 className="font-medium text-xl">Exclusive products</h1>
+        <h1 className="text-np_black font-medium text-xl">Exclusive products</h1>
       </div>
       <input
         type="text"
         placeholder="Search a product"
-        className="rounded-lg border border-black w-80 h-8 p-4 mb-4 focus:outline-none"
+        className="bg-np_white rounded-lg border border-np_black w-80 h-8 p-4 mb-4 focus:outline-none"
         onChange={(event) => {
           console.log(filteredProducts);
           setSearchByTitle(event.target.value);

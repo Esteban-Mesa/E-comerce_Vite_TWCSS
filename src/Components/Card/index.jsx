@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { ShoppingCartContex } from "../../Context";
 import { PlusIcon, CheckIcon } from "@heroicons/react/24/outline";
 
+/* usa bien las props */
 function Card({ dataCard }) {
   const { id, title, price, category, image, description } = dataCard;
 
@@ -35,7 +36,7 @@ function Card({ dataCard }) {
       return (
         <button
           type="button"
-          className="absolute top-0 right-0 flex justify-center items-center bg-gray-900/50 w-7 h-7 p-1  rounded-full m-2 font-bold">
+          className="absolute top-0 right-0 flex justify-center items-center bg-np_white text-np_black bg-opacity-70 w-7 h-7 p-1 rounded-full m-2 font-bold">
           <CheckIcon className="text-white" />
         </button>
       );
@@ -43,7 +44,7 @@ function Card({ dataCard }) {
       return (
         <button
           type="button"
-          className="absolute top-0 right-0 flex justify-center items-center bg-white w-7 h-7 p-1 rounded-full m-2 font-bold"
+          className="absolute top-0 right-0 flex justify-center items-center bg-np_white text-np_black w-7 h-7 p-1 rounded-full m-2 font-bold"
           onClick={(event) => {
             addProductsToCart(event, { id, title, price, category, image, description });
           }}>
@@ -55,10 +56,10 @@ function Card({ dataCard }) {
 
   return (
     <div
-      className="bg-white cursor-pointer w-56 h-60 rounded-lg shadow-inner"
+      className="bg-np_white text-np_black shadow-md cursor-pointer w-56 h-60 p-2 mb-4 rounded-lg"
       onClick={() => showProduct({ title, price, category, image, description })}>
       <figure className="relative mb-2 w-full h-4/5">
-        <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
+        <span className="absolute bg-np_white bg-opacity-70 bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
           {category}
         </span>
         <img className="w-full h-full object-cover rounded-lg" src={image} alt={title} />

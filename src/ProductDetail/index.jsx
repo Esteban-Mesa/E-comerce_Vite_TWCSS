@@ -9,7 +9,7 @@ function ProductDeatail() {
     <aside
       className={`${
         isProductDetailOpen ? null : "hidden"
-      } bg-white flex flex-col fixed right-0 border border-black rounded-lg w-[360px] h-[calc(100vh-68px)] top-[68px] `}>
+      } bg-np_white text-np_black flex flex-col fixed right-0 border border-np_black rounded-lg w-[360px] h-[calc(100vh-68px)] top-[68px] overflow-y-scroll`}>
       <div className="flex justify-between items-center p-6">
         <h2 className="font-medium text-xl">Detail</h2>
         <button type="button" onClick={() => closeProductDetail()}>
@@ -25,7 +25,7 @@ function ProductDeatail() {
         />
       </figure>
       <p className="flex flex-col p-6">
-        <span className="font-medium text-2xl mb-2">{productToShow.price}</span>
+        <span className="font-medium text-2xl mb-2">{`$${productToShow.price}`}</span>
         <span className="font-medium text-lg">{productToShow.title}</span>
         <span className="font-medium text-sm">{productToShow.description}</span>
       </p>

@@ -6,7 +6,7 @@ import {
 
 function OrdersCard({ totalPrice, totalProducts, date }) {
   return (
-    <div className="w-96 mb-3 rounded-lg border p-2 border-black">
+    <div className="bg-np_white w-96 mb-3 rounded-lg border p-2 border-np_black">
       <p className="flex">
         <span className="w-1/4 text-lg font-semibold">${totalPrice}</span>
         <span className="w-1/4 text-ms flex justify-center items-center">

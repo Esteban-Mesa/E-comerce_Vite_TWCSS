@@ -18,14 +18,14 @@ function MyOrder() {
   };
 
   return (
-    <Layout className="bg-red-300">
+    <Layout>
       <div className="relative flex justify-center w-80 mb-6">
         <Link to="/my-orders" className="absolute left-0">
           <ChevronLeftIcon className="h-6 w-6 text-black cursor-pointer" />
         </Link>
         <h1 className="font-medium text-xl">My Order</h1>
       </div>
-      <div className="flex flex-col w-80">
+      <div className=" bg-np_white rounded-lg flex flex-col w-80 mb-20">
         {order[orderIndex()].products?.map((product) => (
           <OrderCard
             key={product.id}

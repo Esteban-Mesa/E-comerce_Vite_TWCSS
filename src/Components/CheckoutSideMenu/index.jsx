@@ -39,8 +39,8 @@ function CheckoutSideMenu() {
     <aside
       className={`${
         isCheckoutSideMenuOpen ? null : "hidden"
-      } bg-white flex flex-col fixed right-0 border border-black rounded-lg w-[360px] h-[calc(100vh-68px)] top-[68px] `}>
-      <div className="flex justify-between items-center p-6">
+      } bg-np_white text-np_black flex flex-col fixed right-0 border border-np_black rounded-lg w-[360px] h-[calc(100vh-68px)] top-[68px] `}>
+      <div className="flex justify-between shadow-md items-center p-6">
         <h2 className="font-medium text-xl">My order</h2>
         <button type="button" onClick={() => closeCheckoutSideMenu()}>
           <XMarkIcon className="h-6 cursor-pointer" />
@@ -65,7 +65,7 @@ function CheckoutSideMenu() {
         </p>
         <Link to="/my-orders/last">
           <button
-            className="bg-black text-white w-full py-3 rounded-lg"
+            className="bg-np_yellow text-np_black font-semibold w-full py-3 rounded-lg"
             type="button"
             onClick={() => {
               handleCheckout();
