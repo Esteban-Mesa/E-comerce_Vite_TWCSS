@@ -9,7 +9,7 @@ function MyOrders() {
 
   return (
     <Layout>
-      <div className="relative flex justify-center w-80 mb-8">
+      <div className="relative flex justify-center w-80 mb-8 mt-20">
         <h1 className="font-medium text-xl">My Orders</h1>
       </div>
 

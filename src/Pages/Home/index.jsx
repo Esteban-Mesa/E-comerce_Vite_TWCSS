@@ -18,8 +18,8 @@ function Home() {
     isCheckoutSideMenuOpen,
   } = useContext(ShoppingCartContex);
 
-  console.log(`filtrados: ${filteredProducts?.length}\n productos:${filterByCategory?.length}
-  title: ${searchByTitle}`);
+  /* console.log(`filtrados: ${filteredProducts?.length}\n productos:${filterByCategory?.length}
+  title: ${searchByTitle}`); */
 
   const renderView = () => {
     const itemsToRender = searchByTitle?.length > 0 ? filteredProducts : products;
@@ -45,7 +45,7 @@ function Home() {
   return (
     <Layout>
       <div className="relative flex justify-center w-80 mb-8">
-        <h1 className="text-np_black font-medium text-xl">Exclusive products</h1>
+        <h1 className="text-np_black font-medium text-xl mt-7">Exclusive products</h1>
       </div>
       <input
         type="text"
@@ -60,8 +60,10 @@ function Home() {
         {loadingProducts ? "loading" : null}
         {errorProducts ? "not found" : null}
         <section
-          className={`grid grap-4 grid-cols-2 lg:grid-cols-4 justify-items-center  ${
-            accommodateProducts() ? "pr-96" : "w-full max-w-screen-lg"
+          className={`grid grap-4 justify-items-center  ${
+            accommodateProducts()
+              ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:lg:grid-cols-4 mr-[200px] sm:mr-[358px]"
+              : "grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full max-w-screen-lg"
           }`}>
           {renderView()}
         </section>

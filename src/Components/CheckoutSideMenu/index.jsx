@@ -39,7 +39,8 @@ function CheckoutSideMenu() {
     <aside
       className={`${
         isCheckoutSideMenuOpen ? null : "hidden"
-      } bg-np_white text-np_black flex flex-col fixed right-0 border border-np_black rounded-lg w-[360px] h-[calc(100vh-68px)] top-[68px] `}>
+      } bg-np_white text-np_black flex flex-col fixed right-0 border border-np_black rounded-lg w-[200px] h-[calc(100vh-100px)] top-[100px]
+      sm:w-[360px] sm:h-[calc(100vh-68px)] sm:top-[68px]`}>
       <div className="flex justify-between shadow-md items-center p-6">
         <h2 className="font-medium text-xl">My order</h2>
         <button type="button" onClick={() => closeCheckoutSideMenu()}>

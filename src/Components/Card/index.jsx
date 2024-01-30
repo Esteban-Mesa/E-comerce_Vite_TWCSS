@@ -56,7 +56,8 @@ function Card({ dataCard }) {
 
   return (
     <div
-      className="bg-np_white text-np_black shadow-md cursor-pointer w-56 h-60 p-2 mb-4 rounded-lg"
+      className="bg-np_white text-np_black w-36 h-40 p-2 mb-4 shadow-md cursor-pointer rounded-lg
+      sm:w-56 sm:h-60"
       onClick={() => showProduct({ title, price, category, image, description })}>
       <figure className="relative mb-2 w-full h-4/5">
         <span className="absolute bg-np_white bg-opacity-70 bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
